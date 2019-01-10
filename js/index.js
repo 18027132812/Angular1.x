@@ -19,8 +19,8 @@ app.factory('vv', function($rootScope,$http, $q, $state) {
   var factory = {};
   factory.getData = function(endpoint, params, method) {
     if (!window.localStorage.username) {
-      console.log('no-localStorage');
       $state.go('page2');
+      return $q.defer().promise;
     }
     var defer = $q.defer();
     if (method == 'GET') {
